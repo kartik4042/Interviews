@@ -48,45 +48,45 @@ I genuinely enjoy understanding how systems behave under contention and failure 
 
 ## 6. Explain Your Dassault Work
 
-# High-Level Context
+## High-Level Context
 
 “SOLIDWORKS PDM is an enterprise product data management system tightly integrated with SQL Server. It handles large engineering workflows involving check-ins, check-outs, permission validations, versioning, and hierarchical file relationships.”
 
-# Main Problem
+## Main Problem
 
 “We started seeing severe contention and latency issues under high-concurrency customer workloads.
 
 Operations like file check-in/check-out were slowing down significantly, and in some deployments we were seeing deadlocks and transaction stalls.”
 
-# How You Investigated
+## How You Investigated
 
 “I started by analyzing SQL Profiler traces and execution plans to identify expensive queries, lock contention patterns, and transaction bottlenecks.
 
 I also analyzed SQL deadlock graphs and XML reports to understand process lists, resource lists, lock acquisition order, and contention hotspots.”
 
-# What You Specifically Did
+## What You Specifically Did
 
-# Locking Improvements
+## Locking Improvements
 
 “One major issue was overly broad transactional scope causing unnecessary lock retention.
 
 We reduced transaction scope and separated independent workflows into smaller transactional boundaries to reduce contention duration.”
 
-# Query Optimization
+## Query Optimization
 
 “We replaced several recursive nested join patterns with recursive CTE-based approaches where appropriate, which simplified hierarchy traversal and reduced query overhead.”
 
-# Batching Optimization
+## Batching Optimization
 
 “A major bottleneck came from recursive stored procedure calls repeatedly traversing hierarchy data.
 
 I worked on redesigning that flow by introducing batched processing logic and temporary-table-backed workflows, reducing repeated DB round trips.”
 
-# Synchronization Improvements
+## Synchronization Improvements
 
 “On the application side, I also worked on improving synchronization behavior in multithreaded workflows by reducing unnecessary critical-section contention.”
 
-# Results
+## Results
 
 “We reduced high-contention query latency from roughly ~2 seconds to under ~50 milliseconds in critical workflows, while also improving throughput stability under load.”
 
@@ -327,18 +327,18 @@ Those are the kinds of systems problems I genuinely enjoy.”
 
 Good Questions
 
-# About the Team
+## About the Team
 
 “What kinds of engineering challenges is the transaction engine group currently spending the most time solving?”
 
-# About Scale
+## About Scale
 
 “How do you see the architecture evolving with newer workloads like AI Lakehouse and vector search integrated into transactional systems?”
 
-# About Engineering Culture
+## About Engineering Culture
 
 “What differentiates engineers who succeed long term on your team?”
 
-# About Role Expectations
+## About Role Expectations
 
 “For someone joining at this level, what kind of ownership do you typically expect in the first 6–12 months?”
